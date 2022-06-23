@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <title>Document</title>
+  <style>
+    body {
+      overflow: hidden;
+      font-size: 25px;
+      height: 100%;
+    }
+
+    .header {
+      width: 100%;
+      height: 130px;
+      background: url(./bg.png);
+      background-size: 100% 100%;
+    }
+
+    img {
+      background: 100%;
+    }
+
+    .container {
+      margin-top: 20px;
+      width: 80%;
+      height: 600px;
+      display: flex;
+    }
+
+    #left {
+      width: 300px;
+      text-align: center;
+      background: #e9e2d7;
+      height: 100%;
+      padding: 100px 0;
+    }
+
+    #left li {
+      line-height: 80px;
+      height: 80px;
+      width: 100%;
+    }
+
+    #left li.current {
+      background: #875a58;
+      color: #fff;
+    }
+
+    #right {
+      flex: 1;
+      height: 100%;
+    }
+
+    li {
+      list-style-type: none;
+    }
+
+    li a {
+      text-decoration: none;
+      height: 40px;
+      line-height: 40px;
+      display: block;
+      color: black;
+    }
+
+    #right {
+      width: 500px;
+      padding: 20px;
+      background: #f7f6f1;
+      position: relative;
+    }
+
+    #right li {
+      position: absolute;
+      left: 50px;
+      top: 50px;
+      padding-left: 15px;
+      box-sizing: border-box;
+      display: none;
+    }
+
+    #right li.current {
+      display: block;
+    }
+
+    .footer {
+      width: 100%;
+      height: 40px;
+      background: #6d4b49;
+      position: fixed;
+      bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+  </div>
+  <div class="container">
+    <ul id="left">
+      <li class="current">贵州大学</li>
+      <li>贵州大学部分网址</li>
+      <li>实验室安全</li>
+
+    </ul>
+    <ul id="right">
+      <li class="current">
+        <a href="https://www.gzu.edu.cn/" target="_blank">贵州大学网址</a>
+        <a href="http://gs.gzu.edu.cn/" target="_blank">贵州大学研究生院</a>
+        <a href="http://gsgl.gzu.edu.cn/" target="_blank">贵州大学研究生综合管理系统</a>
+        <a href="http://lib.gzu.edu.cn/" target="_blank">贵州大学图书馆</a>
+      </li>
+      <li>
+        <a href="http://fl.gzu.edu.cn/" target="_blank">外国语学院</a>
+        <a href="http://ccm.gzu.edu.cn/mainm.htm" target="_blank">文学与传媒学院</a>
+        <a href="http://spsd.gzu.edu.cn" target="_blank">哲学与社会发展学院</a>
+        <a href="http://hec.gzu.edu.cn" target="_blank">历史与民族文化学院</a>
+        <a href="http://law.gzu.edu.cn" target="_blank">法学院</a>
+        <a href="http://music.gzu.edu.cn" target="_blank">音乐学院</a>
+        <a href="http://cfa.gzu.edu.cn" target="_blank">美术学院</a>
+        <a href="http://mc.gzu.edu.cn" target="_blank">管理学院</a>
+        <a href="http://econ.gzu.edu.cn" target="_blank">经济学院</a>
+        <a href="http://spa.gzu.edu.cn" target="_blank">公共管理学院</a>
+        <a href="http://tci.gzu.edu.cn" target="_blank">旅游与文化产业学院</a>
+      </li>
+      <li>
+        <a href="http://www.ecce.fudan.edu.cn/a6/ea/c5763a42730/page.htm?ivk_sa=1024320u" target="_blank">
+          化学实验室安全知识1
+        </a>
+        <a href="https://hjxy.nju.edu.cn/sy/ynbg/sysgl/20210426/i198614.html" target="_blank">化学实验室安全知识2</a>
+        <a href="http://sysxb.jsviat.edu.cn/2018/0128/c4795a72186/page.htm" target="_blank">化学实验室安全知识3</a>
+      </li>
+
+    </ul>
+
+
+  </div>
+  <div class="footer"></div>
+</body>
+
+<script>
+
+  var navList = document.getElementById('left').getElementsByTagName('li');
+  var contents = document.getElementById('right').getElementsByTagName('li');
+  for (var i = 0; i < navList.length; i++) {
+    //在事件之前我先把索引给准备好
+    navList[i].setAttribute("index", i);
+    navList[i].onclick = function () {
+      for (var j = 0; j < navList.length; j++) {
+        //removeAttribute既可以移除自定义属性，也可以移除非自定义属性
+        navList[j].removeAttribute('class');
+      }
+      this.className = "current";
+      //将索引值先给存下来
+      var num = this.getAttribute("index");
+      for (var k = 0; k < contents.length; k++) {
+        contents[k].removeAttribute('class');
+      }
+      contents[num].className = "current";
+    }
+  }
+
+</script>
+</body>
+
+</html>
